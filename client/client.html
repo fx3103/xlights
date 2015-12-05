@@ -1,0 +1,44 @@
+<head>
+  <title>File Upload Xlights</title>
+</head>
+
+<body>
+  {{>fileList}}
+</body>
+
+<template name="fileList">
+  
+  <div style="height:100%;width:100%">
+  <br/><i>Upload the gif to see the LED lights</i><br/><br/>
+  {{> upload_bootstrap multiple=true callbacks=myCallbacks formData=someStuff }}
+  <br/>
+
+  <table border="1" width="100%">    
+    <tbody>
+      {{#each theUploads}}
+      <tr>
+        
+        <td>{{name}}</td>
+        
+        <td><a target="_blank" href="/upload{{path}}"></a></td>
+
+        <td> <a><img src="/upload{{path}}" href="/upload{{path}}" height="80" width="200"></a> </td>
+        <!--<td><a><img src="{{this.url store='uploads'}}" height="80" width="80"></a></td> -->
+        <td><button style="text-align: center" id="deleteFileButton"> delete </button></td>
+ 
+        <td><input type="value" id="d">  duration  <button>    -play-    </button></td>
+        
+      </tr>
+      {{/each}}
+    </tbody>
+  </table>
+</div>
+
+<div style="height:50%;width:100%">
+  <video  style="width:100%;height:50%" poster="http://static3.businessinsider.com/image/525041c269bedd4c1ed59776/the-17-minute-take-in-gravity-is-a-masterpiece.jpg" controls>
+    <source  src="https://s3.amazonaws.com/xlab-media/matrixClip.mp4" type="video/mp4">
+  </video>
+</div>
+ 
+  
+</template>
